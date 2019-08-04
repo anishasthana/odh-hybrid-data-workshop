@@ -1,18 +1,21 @@
 --- 
-name: "TITLE OF WORKSHOP HERE"
+name: "Data Engineering, Analytics, and Machine Learning Infrastructure with OpenShift"
 authors: 
   - 
-    name: "Shadowman1"
-    email: 
+    name: "Anish Asthana"
+    email: aasthana@redhat.com
   - 
-    name: "Shadowman2"
-    email: 
-duration: "120 minutes"
+    name: "Juana Nakfour"
+    email: jnakfour@redhatc.com
+duration: "180 minutes"
 keywords: 
   - OpenShift
   - "machine learning"
   - AI
   - Jupyter
   - Python
-  - workflow
-repo: "link to githubrepo here"
+  - Prometheus
+  - Spark
+  - Ceph
+
+repo: "https://github.com/anishasthana/odh-hybrid-data-workshop"
