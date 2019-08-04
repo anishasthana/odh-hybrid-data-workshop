@@ -1,12 +1,11 @@
 # Deployment Instructions
 
-This document needs to contain all information on how to deploy the lab. 
+This workshop  is deployed using the OpenDatahub Operator found [here](https://gitlab.com/opendatahub/opendatahub-operator).
 
-## RHPDS link 
-This link *must* be given here.
+## Instructions to deploy
 
-## Instructions to deploy on RHPDS
-These should be given as a single command.
-
-## Instructions to deploy outside of RHPDS
-These should be given as a single command.
+1. Clone the opendatahub-operator repository.
+2. Copy `my_environment_cr.yaml` to the root of the opendatahub-operator repository.
+3. Follow the instructions for installation as found at [manual-installation](https://gitlab.com/opendatahub/opendatahub-operator/blob/master/docs/manual-installation.adoc).
+4. Follow the instructions for Seldon and Kafka as found in [docs](https://gitlab.com/opendatahub/opendatahub-operator/tree/master/docs).
+5. To Deploy Ceph, ......
