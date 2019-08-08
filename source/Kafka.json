@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
+      "name": "DS_DEVCONF",
+      "label": "devconf",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -54,11 +54,11 @@
   "hideControls": false,
   "id": null,
   "links": [],
-  "refresh": "30s",
+  "refresh": "5s",
   "rows": [
     {
       "collapse": false,
-      "height": 201,
+      "height": "250px",
       "panels": [
         {
           "cacheTimeout": null,
@@ -69,7 +69,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_DEVCONF}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -118,9 +118,9 @@
             {
               "expr": "count(kafka_server_replicamanager_leadercount)",
               "format": "time_series",
-              "intervalFactor": 1,
+              "intervalFactor": 2,
               "refId": "A",
-              "step": 30
+              "step": 40
             }
           ],
           "thresholds": "0,3",
@@ -134,7 +134,7 @@
               "value": "null"
             }
           ],
-          "valueName": "current"
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -145,7 +145,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_DEVCONF}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -194,9 +194,9 @@
             {
               "expr": "sum(kafka_server_replicamanager_partitioncount)",
               "format": "time_series",
-              "intervalFactor": 1,
+              "intervalFactor": 2,
               "refId": "A",
-              "step": 30
+              "step": 40
             }
           ],
           "thresholds": "0,0",
@@ -210,7 +210,7 @@
               "value": "null"
             }
           ],
-          "valueName": "current"
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -221,7 +221,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_DEVCONF}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -272,7 +272,7 @@
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
-              "step": 60
+              "step": 40
             }
           ],
           "thresholds": "1,1",
@@ -286,7 +286,7 @@
               "value": "null"
             }
           ],
-          "valueName": "current"
+          "valueName": "avg"
         },
         {
           "cacheTimeout": null,
@@ -297,7 +297,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_DEVCONF}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -306,7 +306,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
-          "id": 1,
+          "id": 5,
           "interval": null,
           "links": [],
           "mappingType": 1,
@@ -348,7 +348,7 @@
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
-              "step": 60
+              "step": 40
             }
           ],
           "thresholds": "1,1",
@@ -362,7 +362,7 @@
               "value": "null"
             }
           ],
-          "valueName": "current"
+          "valueName": "avg"
         }
       ],
       "repeat": null,
@@ -381,9 +381,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_DEVCONF}",
           "fill": 1,
-          "id": 5,
+          "id": 1,
           "legend": {
             "alignAsTable": true,
             "avg": false,
@@ -392,13 +392,11 @@
             "min": false,
             "rightSide": true,
             "show": true,
-            "sort": "current",
-            "sortDesc": true,
             "total": false,
             "values": true
           },
           "lines": true,
-          "linewidth": 2,
+          "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
           "percentage": false,
@@ -412,10 +410,9 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(kafka_server_brokertopicmetrics_messagesin_total{topic != ''}[1m])) by (topic)",
+              "expr": "sum(rate(kafka_server_brokertopicmetrics_messagesin_total{topic != ''}[2m])) by (topic)",
               "format": "time_series",
-              "intervalFactor": 1,
-              "legendFormat": "{{topic}}",
+              "intervalFactor": 2,
               "refId": "A",
               "step": 2
             }
@@ -426,198 +423,7 @@
           "title": "Topic Inbound Message Rate",
           "tooltip": {
             "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        }
-      ],
-      "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": false,
-      "title": "Dashboard Row",
-      "titleSize": "h6"
-    },
-    {
-      "collapse": false,
-      "height": 250,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "id": 6,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": true,
-            "hideEmpty": false,
-            "hideZero": true,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "sideWidth": 100,
-            "sort": "current",
-            "sortDesc": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(kafka_consumer_group_lag{group !~ '^console-.*'}) by (group)",
-              "format": "time_series",
-              "instant": false,
-              "interval": "30s",
-              "intervalFactor": 2,
-              "legendFormat": "{{group}}",
-              "refId": "A",
-              "step": 30
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Kafka Consumer Group Lag",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "transparent": false,
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        }
-      ],
-      "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": false,
-      "title": "Dashboard Row",
-      "titleSize": "h6"
-    },
-    {
-      "collapse": false,
-      "height": 250,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "id": 7,
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": true,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(kafka_consumer_group_lag{group !~ '^console-.*'}) by (topic)",
-              "format": "time_series",
-              "interval": "30s",
-              "intervalFactor": 1,
-              "legendFormat": "{{topic}}",
-              "refId": "A",
-              "step": 30
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Kafka Topic Lag",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
+            "sort": 0,
             "value_type": "individual"
           },
           "type": "graph",
@@ -663,7 +469,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -693,5 +499,5 @@
   },
   "timezone": "",
   "title": "Kafka",
-  "version": 6
+  "version": 2
 }
