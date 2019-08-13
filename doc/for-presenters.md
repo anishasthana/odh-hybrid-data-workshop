@@ -6,7 +6,7 @@ This workshop is designed to show data engineers and system administrators how t
 * How to perform some data wrangling using Spark and Jupyter Notebooks in a hybrid cloud environment
 * How to send data with Kafka, and monitor the health of their ODH environment with Prometheus and Grafana
 
-## Background and workshop flow 
+## Background and workshop flow
 
 Reading the [Open Data Hub reference architecture](https://opendatahub.io/arch.html) will provide a good starting point for understanding how the operator works as well as the individual components. The workshop can be broken into 3 main components, namely:
 

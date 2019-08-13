@@ -42,7 +42,7 @@ In order to get started with the Open Data Hub, you need to deploy it into your 
 
 4. Notebooks contain *cells*.  Run each cell in your notebook by clicking on the `>| Run` button or hitting `Shift+Enter` for each cell, starting with the first.  When a cell is actively running, it will have `[*]` on the side.  Some cells will take time to run.  Once done, it will have a number, such as `[1]`.  You can go through the entire notebook until all cells are run.
 
-5. The `/source/Notebooks/` folder contains two other notebooks called `Kafka Consumer` and `Kafka Producer`. Open both of them and start running cells in each one.
+5. The `/source/Notebooks/` folder contains two other notebooks called `Kafka Consumer` and `Kafka Producer`. Open both of them and change <PROJECT_NAME> to the name of your rpoject in the OpenShift Console. Then you can start running the cells in both of them. Leave the cells running.
 
 6. Once you have started running the Kafka notebooks, go back to the OpenShift console. Under `Networking -> Routes`, find the route named `Grafana` and click on it.
 
